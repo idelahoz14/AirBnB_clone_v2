@@ -18,7 +18,7 @@ class FileStorage:
                 if type(value) == cls:
                     list_ret = value
             return list_ret
-            
+
     def new(self, obj):
         """Adds new object to storage dictionary"""
         self.all().update({obj.to_dict()['__class__'] + '.' + obj.id: obj})
