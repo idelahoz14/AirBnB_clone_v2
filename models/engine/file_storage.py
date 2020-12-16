@@ -14,9 +14,9 @@ class FileStorage:
             return FileStorage.__objects
         else:
             list_ret = {}
-            for key[value] in self.__objects.items:
-                if type(value) == cls:
-                    list_ret = value
+            for key, value in self.__objects.items:
+                if cls.__name__ in cls:
+                    list_ret[key] = value
             return list_ret
 
     def new(self, obj):
