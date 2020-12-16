@@ -24,7 +24,7 @@ class FileStorage:
         else:
             list_ret = {}
             for key, value in self.__objects.items():
-                if cls.__name__ in cls:
+                if cls.__name__ in key:
                     list_ret[key] = value
             return list_ret
 
