@@ -117,7 +117,7 @@ class HBNBCommand(cmd.Cmd):
         """ Create an object of any class"""
         try:
             if not args:
-                    raise SyntaxError()
+                raise SyntaxError()
             data = args.split(" ")
             element = eval("{}()".format(data[0]))
             for item in data[1:]:
@@ -125,8 +125,6 @@ class HBNBCommand(cmd.Cmd):
                 if split[1][0] == "\"":
                     split[1] = split[1][1:-1]
                     split[1] = split[1].replace('_', ' ').replace('"', '\\"')
-                elif split[1].isdigit():
-                    setattr(element, split[0], split[1])
                 setattr(element, split[0], split[1])
             element.save()
             print("{}".format(element.id))
