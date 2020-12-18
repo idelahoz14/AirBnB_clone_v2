@@ -16,18 +16,19 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         """Instatntiates a new model"""
         if **kwargs:
-            for key, value in kwargs.items():
-                if key == 'created_at' or key == 'updated_at':
-                    val = datetime.strptime(value, "%Y-%m-%D-%h:%M:%S.%f")
-                    setattr(self, key, val)
-                elif not key == '__class__':
-                    setattr(self, key, value)
-            if self.id is None:
-                setattr(self, 'id', str(uuid.uuid4()))
-            if self.created_at is None:
-                setattr(self, 'created_at', datetime.utcnow())
-            if self.updated_at is None
-                setattr(self, 'updated_at', datetime.utcnow())
+            if 'id' not in kwargs:
+                self.id = str(uuid.uuid4())
+            if 'updated_at' in kwargs:
+                kwargs['updated_at'] = datetime.strptime(kwargs['updated_at'], '%Y-%m-%dT%H:%M:%S.%f')
+            if 'updated_at' not in kwargs:
+                self.updated_at = datetime.now()
+            if 'created_at' in kwargs:
+                kwargs['created_at'] = datetime.strptime(kwargs['created_at'], '%Y-%m-%dT%H:%M:%S.%f')
+            if 'created_at' not in kwargs:
+                self.created_at = datetime.now()
+            if '__class__' in kwargs:
+                del kwargs['__class__']
+            self.__dict__.update(kwargs)
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.utcnow()
