@@ -12,11 +12,11 @@ def do_pack():
     has been correctly generated.
     Otherwise, it should return None"""
 
-    file_name = "web_static_" +
-    datetime.now().strftime("%Y%m%d%H%M%S") +
+    file_name = "web_static_" + \
+    datetime.now().strftime("%Y%m%d%H%M%S") + \
     ".tgz"
     directorio = "versions/"
-    local("mkdir -p " + folder)
+    local("mkdir -p " + directorio)
     check = local("tar -cvzf {}{} web_static".format(directorio, file_name))
     if check.succeeded:
         return (directorio + file_name)
