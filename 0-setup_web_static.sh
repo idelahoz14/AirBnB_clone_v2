@@ -2,7 +2,6 @@
 # Script that sets up your web servers for the deployment of web_static
 sudo apt-get update
 sudo apt-get install nginx
-mkdir -p /data/web_static/releases/
 mkdir -p /data/web_static/shared/
 mkdir -p /data/web_static/releases/test/
 echo "Holberton School" > /data/web_static/releases/test/index.html
